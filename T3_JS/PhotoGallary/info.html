@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Photo Gallery</title>
+  <!--stylesheet-->
+  <link rel="stylesheet" href="style.css"> 
+</head>
+
+<body>
+  <div class="gallery">
+    <div class="filter">
+
+        <!--select dropdown-->
+      <select id="categorySelect" onchange="filterImages()"> 
+        <option value="all">All Categories</option>
+        <option value="nature">Nature</option>
+        <option value="food">Food</option>
+        <option value="animals">Animals</option>
+        <option value="cake">Cake</option>
+      </select>
+    </div>
+
+    <div class="image-container">
+
+        <!--Nature Images-->
+      <div class="image" data-category="nature">
+        <img src="nature1.jpeg" alt="Nature 1" onclick="viewImage(this)">
+      </div>
+      <div class="image" data-category="nature">
+        <img src="nature2.jpeg" alt="Nature 2" onclick="viewImage(this)">
+      </div>
+      <div class="image" data-category="nature">
+        <img src="nature3.jpeg" alt="Nature 3" onclick="viewImage(this)">
+      </div>
+      <div class="image" data-category="nature">
+        <img src="nature4.jpeg" alt="Nature 4" onclick="viewImage(this)">
+      </div>
+      <div class="image" data-category="nature">
+        <img src="nature5.jpeg" alt="Nature 5" onclick="viewImage(this)">
+      </div>
+      <div class="image" data-category="nature">
+        <img src="nature6.jpeg" alt="Nature 6" onclick="viewImage(this)">
+      </div>
+      <div class="image" data-category="nature">
+        <img src="nature7.jpeg" alt="Nature 7" onclick="viewImage(this)">
+      </div>
+      <div class="image" data-category="nature">
+        <img src="nature8.jpeg" alt="Nature 8" onclick="viewImage(this)">
+      </div>
+      <div class="image" data-category="nature">
+        <img src="nature9.jpeg" alt="Nature 9" onclick="viewImage(this)">
+      </div>
+      <div class="image" data-category="nature">
+        <img src="nature10.jpeg" alt="Nature 10" onclick="viewImage(this)">
+      </div>
+
+      <!--animal images-->
+      <div class="image" data-category="animals">
+        <img src="animal1.jpeg" alt="Animal 1" onclick="viewImage(this)">
+      </div>
+      <div class="image" data-category="animals">
+        <img src="animal2.jpeg" alt="Animal 2" onclick="viewImage(this)">
+      </div>
+      <div class="image" data-category="animals">
+        <img src="animal3.jpeg" alt="Animal 3" onclick="viewImage(this)">
+      </div>
+      <div class="image" data-category="animals">
+        <img src="animal4.jpeg" alt="Animal 4" onclick="viewImage(this)">
+      </div>
+      <div class="image" data-category="animals">
+        <img src="animal5.jpeg" alt="Animal 5" onclick="viewImage(this)">
+      </div>
+      <div class="image" data-category="animals">
+        <img src="animal6.jpeg" alt="Animal 6" onclick="viewImage(this)">
+      </div>
+      <div class="image" data-category="animals">
+        <img src="animal7.jpeg" alt="Animal 7" onclick="viewImage(this)">
+      </div>
+      <div class="image" data-category="animals">
+        <img src="animal8.jpeg" alt="Animal 8" onclick="viewImage(this)">
+      </div>
+      <div class="image" data-category="animals">
+        <img src="animal9.jpeg" alt="Animal 9" onclick="viewImage(this)">
+      </div>
+      <div class="image" data-category="animals">
+        <img src="animal10.jpeg" alt="Animal 10" onclick="viewImage(this)">
+      </div>
+
+      <!-- food images -->
+      <div class="image" data-category="food">
+        <img src="food1.jpeg" alt="food 1" onclick="viewImage(this)">
+      </div>
+      <div class="image" data-category="food">
+        <img src="food2.jpeg" alt="food 2" onclick="viewImage(this)">
+      </div>
+      <div class="image" data-category="food">
+        <img src="food3.jpeg" alt="food 3" onclick="viewImage(this)">
+      </div>
+      <div class="image" data-category="food">
+        <img src="food4.jpeg" alt="food 4" onclick="viewImage(this)">
+      </div>
+      <div class="image" data-category="food">
+        <img src="food5.jpeg" alt="food 5" onclick="viewImage(this)">
+      </div>
+      <div class="image" data-category="food">
+        <img src="food6.jpeg" alt="food 6" onclick="viewImage(this)">
+      </div>
+      <div class="image" data-category="food">
+        <img src="food7.jpeg" alt="food 7" onclick="viewImage(this)">
+      </div>
+      <div class="image" data-category="food">
+        <img src="food8.jpeg" alt="food 8" onclick="viewImage(this)">
+      </div>
+      <div class="image" data-category="food">
+        <img src="food9.jpeg" alt="food 9" onclick="viewImage(this)">
+      </div>
+      <div class="image" data-category="food">
+        <img src="food10.jpeg" alt="food 10" onclick="viewImage(this)">
+      </div>
+
+      <!-- cake images -->
+      <div class="image" data-category="cake">
+        <img src="cake1.jpeg" alt="cake 1" onclick="viewImage(this)">
+      </div>
+      <div class="image" data-category="cake">
+        <img src="cake2.jpeg" alt="cake 2" onclick="viewImage(this)">
+      </div>
+      <div class="image" data-category="cake">
+        <img src="cake3.jpeg" alt="cake 3" onclick="viewImage(this)">
+      </div>
+      <div class="image" data-category="cake">
+        <img src="cake4.jpeg" alt="cake 4" onclick="viewImage(this)">
+      </div>
+      <div class="image" data-category="cake">
+        <img src="cake5.jpeg" alt="cake 5" onclick="viewImage(this)">
+      </div>
+      <div class="image" data-category="cake">
+        <img src="cake6.jpeg" alt="cake 6" onclick="viewImage(this)">
+      </div>
+      <div class="image" data-category="cake">
+        <img src="cake7.jpeg" alt="cake 7" onclick="viewImage(this)">
+      </div>
+      <div class="image" data-category="cake">
+        <img src="cake8.jpeg" alt="cake 8" onclick="viewImage(this)">
+      </div>
+      <div class="image" data-category="cake">
+        <img src="cake9.jpeg" alt="cake 9" onclick="viewImage(this)">
+      </div>
+      <div class="image" data-category="cake">
+        <img src="cake10.jpeg" alt="cake 10" onclick="viewImage(this)">
+      </div>
+
+    </div>
+  </div>
+
+  <!--shows a full-sized image when a thumbnail is clicked, with a close button to hide the modal-->
+  <div id="imageModal" class="modal">
+    <!--onclick event run when click on image-->
+    <span class="close" onclick="closeModal()">&times;</span>
+    <img class="modal-content" id="img01">
+  </div>
+
+  <script src="script.js"></script> <!-- java script -->
+</body>
+</html>

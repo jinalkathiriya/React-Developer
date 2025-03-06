@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee CRUD App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        h2 {
+            text-align: center;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        input, button {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0; 
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        button {
+            background: #28a745;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #218838;
+        }
+        table {
+            width: 100%;
+            margin-top: 20px;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        .edit-btn {
+            background: #ffc107;
+            color: white;
+        }
+        .delete-btn {
+            background: #dc3545;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Employee Management</h2>
+    
+    <input type="hidden" id="employeeIndex">
+    <input type="text" id="name" placeholder="Employee Name" required>
+    <input type="text" id="position" placeholder="Position" required>
+    <input type="number" id="salary" placeholder="Salary" required>
+    <button onclick="addOrUpdateEmployee()">Save Employee</button>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Position</th>
+                <th>Salary</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="employeeTable"></tbody>
+    </table>
+</div>
+
+<script>
+    let employees = JSON.parse(localStorage.getItem("employees")) || [];
+
+    function renderEmployees() {
+        const table = document.getElementById("employeeTable");
+        table.innerHTML = "";
+        employees.forEach((emp, index) => {
+            table.innerHTML += `
+                <tr>
+                    <td>${emp.name}</td>
+                    <td>${emp.position}</td>
+                    <td>${emp.salary}</td>
+                    <td>
+                        <button class="edit-btn" onclick="editEmployee(${index})">Edit</button>
+                        <button class="delete-btn" onclick="deleteEmployee(${index})">Delete</button>
+                    </td>
+                </tr>
+            `;
+        });
+    }
+
+    function addOrUpdateEmployee() {
+        const name = document.getElementById("name").value;
+        const position = document.getElementById("position").value;
+        const salary = document.getElementById("salary").value;
+        const index = document.getElementById("employeeIndex").value;
+
+        if (name === "" || position === "" || salary === "") {
+            alert("All fields are required!");
+            return;
+        }
+
+        if (index === "") {
+            employees.push({ name, position, salary });
+        } else {
+            employees[index] = { name, position, salary };
+            document.getElementById("employeeIndex").value = "";
+        }
+
+        localStorage.setItem("employees", JSON.stringify(employees));
+        document.getElementById("name").value = "";
+        document.getElementById("position").value = "";
+        document.getElementById("salary").value = "";
+
+        renderEmployees();
+    }
+
+    function editEmployee(index) {
+        document.getElementById("name").value = employees[index].name;
+        document.getElementById("position").value = employees[index].position;
+        document.getElementById("salary").value = employees[index].salary;
+        document.getElementById("employeeIndex").value = index;
+    }
+
+    function deleteEmployee(index) {
+        if (confirm("Are you sure you want to delete this employee?")) {
+            employees.splice(index, 1);
+            localStorage.setItem("employees", JSON.stringify(employees));
+            renderEmployees();
+        }
+    }
+
+    renderEmployees();
+</script>
+
+</body>
+</html>
